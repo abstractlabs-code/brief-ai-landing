@@ -1,6 +1,10 @@
 import { Button } from '@/components/ui/button';
+import { useState } from 'react';
+import VideoModal from './VideoModal';
 
 const Hero = () => {
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  
   const scrollToRegister = () => {
     const element = document.getElementById('register');
     if (element) {
@@ -40,9 +44,10 @@ const Hero = () => {
             <Button 
               variant="outline"
               size="lg"
+              onClick={() => setIsVideoModalOpen(true)}
               className="w-full sm:w-auto rounded-full px-6 lg:px-10 py-4 lg:py-6 text-base lg:text-xl font-semibold border-primary/20 hover:border-primary/40 hover:bg-primary/5 transition-all duration-300 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary/20"
             >
-              Watch Demo
+              🎥 Watch Demo
             </Button>
           </div>
 
@@ -62,6 +67,11 @@ const Hero = () => {
           </div>
         </div>
       </div>
+      
+      <VideoModal 
+        isOpen={isVideoModalOpen} 
+        onClose={() => setIsVideoModalOpen(false)} 
+      />
     </section>
   );
 };

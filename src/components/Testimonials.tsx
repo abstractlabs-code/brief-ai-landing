@@ -1,5 +1,7 @@
 import { Card, CardContent } from '@/components/ui/card';
 import { Star } from 'lucide-react';
+import userAvatar1 from '@/assets/user-avatar-1.jpg';
+import userAvatar2 from '@/assets/user-avatar-2.jpg';
 
 const Testimonials = () => {
   const testimonials = [
@@ -7,13 +9,13 @@ const Testimonials = () => {
       name: "Sarah Chen",
       title: "Product Manager at TechFlow",
       quote: "Briefly has transformed how our remote team handles meetings. The AI summaries are incredibly accurate, and we never miss important action items anymore. It's like having a dedicated note-taker in every meeting.",
-      avatar: "SC"
+      avatar: userAvatar1
     },
     {
       name: "Marcus Rodriguez",
       title: "Engineering Lead at DataSync",
       quote: "The time we save with Briefly is incredible. What used to take us 30 minutes of post-meeting cleanup now happens automatically. The action item detection is spot-on and keeps our team accountable.",
-      avatar: "MR"
+      avatar: userAvatar2
     }
   ];
 
@@ -51,9 +53,11 @@ const Testimonials = () => {
                 </blockquote>
                 
                 <div className="flex items-center">
-                  <div className="w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center text-white font-semibold mr-3 lg:mr-4 group-hover:scale-110 transition-transform duration-300">
-                    {testimonial.avatar}
-                  </div>
+                  <img 
+                    src={testimonial.avatar}
+                    alt={testimonial.name}
+                    className="w-10 h-10 lg:w-12 lg:h-12 rounded-full object-cover mr-3 lg:mr-4 group-hover:scale-110 transition-transform duration-300 shadow-md"
+                  />
                   <div>
                     <div className="font-semibold text-foreground text-sm lg:text-base">{testimonial.name}</div>
                     <div className="text-muted-foreground text-xs lg:text-sm">{testimonial.title}</div>
