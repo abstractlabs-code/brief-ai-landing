@@ -1,6 +1,9 @@
 import { X, Play, Pause, Volume2, VolumeX } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useEffect, useState, useRef } from 'react';
+import demoFrame1 from '@/assets/demo-frame-1.jpg';
+import demoFrame2 from '@/assets/demo-frame-2.jpg';
+import demoFrame3 from '@/assets/demo-frame-3.jpg';
 
 interface VideoModalProps {
   isOpen: boolean;
@@ -10,8 +13,12 @@ interface VideoModalProps {
 const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const [currentFrame, setCurrentFrame] = useState(0);
   const modalRef = useRef<HTMLDivElement>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  
+  const demoFrames = [demoFrame1, demoFrame2, demoFrame3];
+  const frameDuration = 3000; // 3 seconds per frame
 
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
@@ -42,22 +49,41 @@ const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
   }, [isOpen, onClose]);
 
   const togglePlay = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause();
-      } else {
-        videoRef.current.play();
+    if (isPlaying) {
+      // Pause the demo
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
       }
-      setIsPlaying(!isPlaying);
+      setIsPlaying(false);
+    } else {
+      // Start the demo
+      setIsPlaying(true);
+      intervalRef.current = setInterval(() => {
+        setCurrentFrame((prev) => (prev + 1) % demoFrames.length);
+      }, frameDuration);
     }
   };
 
   const toggleMute = () => {
-    if (videoRef.current) {
-      videoRef.current.muted = !isMuted;
-      setIsMuted(!isMuted);
-    }
+    setIsMuted(!isMuted);
   };
+
+  // Clean up interval when modal closes or component unmounts
+  useEffect(() => {
+    if (!isOpen && intervalRef.current) {
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+      setIsPlaying(false);
+      setCurrentFrame(0);
+    }
+    
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -78,20 +104,17 @@ const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
           </Button>
         </div>
         
-        <div className="relative aspect-video bg-black">
-          <video
-            ref={videoRef}
-            className="w-full h-full"
-            poster="https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=800&h=450&fit=crop"
-            onPlay={() => setIsPlaying(true)}
-            onPause={() => setIsPlaying(false)}
-            onEnded={() => setIsPlaying(false)}
-            controls={false}
-            muted={isMuted}
-          >
-            <source src="/videos/demo.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+        <div className="relative aspect-video bg-black overflow-hidden">
+          <div className="relative w-full h-full">
+            <img
+              src={demoFrames[currentFrame]}
+              alt={`Briefly Platform Demo - Frame ${currentFrame + 1}`}
+              className="w-full h-full object-cover transition-opacity duration-500"
+            />
+            {!isPlaying && (
+              <div className="absolute inset-0 bg-black/20" />
+            )}
+          </div>
           
           {/* Play/Pause Button */}
           <div className="absolute inset-0 flex items-center justify-center">
@@ -126,10 +149,26 @@ const VideoModal = ({ isOpen, onClose }: VideoModalProps) => {
         </div>
         
         <div className="p-4 lg:p-6">
-          <p className="text-muted-foreground text-sm lg:text-base">
-            See how Briefly transforms your meeting workflow with AI-powered transcription, 
-            smart summaries, and automated action items in just 2 minutes.
-          </p>
+          <div className="flex items-center justify-between mb-2">
+            <p className="text-muted-foreground text-sm lg:text-base">
+              See how Briefly transforms your meeting workflow with AI-powered transcription, 
+              smart summaries, and automated action items.
+            </p>
+            <div className="flex items-center gap-2 text-xs text-muted-foreground">
+              <div className="w-2 h-2 bg-primary rounded-full animate-pulse" />
+              Demo {currentFrame + 1} / {demoFrames.length}
+            </div>
+          </div>
+          <div className="flex gap-2">
+            {demoFrames.map((_, index) => (
+              <div
+                key={index}
+                className={`h-1 rounded-full flex-1 transition-colors duration-300 ${
+                  index === currentFrame ? 'bg-primary' : 'bg-muted'
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
