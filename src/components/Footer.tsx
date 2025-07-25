@@ -32,21 +32,21 @@ const Footer = () => {
             <div className="flex space-x-4">
               <a 
                 href="#" 
-                className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300"
+                className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:scale-110 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20"
                 aria-label="Twitter"
               >
                 <Twitter className="w-5 h-5" />
               </a>
               <a 
                 href="#" 
-                className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300"
+                className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:scale-110 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20"
                 aria-label="LinkedIn"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
               <a 
                 href="#" 
-                className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all duration-300"
+                className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white hover:scale-110 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20"
                 aria-label="GitHub"
               >
                 <Github className="w-5 h-5" />
@@ -61,7 +61,7 @@ const Footer = () => {
               <li>
                 <button 
                   onClick={() => scrollToSection('features')}
-                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-1"
                 >
                   Features
                 </button>
@@ -69,7 +69,7 @@ const Footer = () => {
               <li>
                 <button 
                   onClick={() => scrollToSection('pricing')}
-                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-1"
                 >
                   Pricing
                 </button>
@@ -77,7 +77,7 @@ const Footer = () => {
               <li>
                 <button 
                   onClick={() => scrollToSection('register')}
-                  className="text-muted-foreground hover:text-foreground transition-colors"
+                  className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-1"
                 >
                   Contact
                 </button>
@@ -90,17 +90,17 @@ const Footer = () => {
             <h3 className="font-semibold text-foreground mb-4">Legal</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a href="#" className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-1">
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a href="#" className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-1">
                   Terms of Service
                 </a>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
+                <a href="#" className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-1">
                   Cookie Policy
                 </a>
               </li>

@@ -34,12 +34,15 @@ const Header = () => {
     }`}>
       <div className="container mx-auto px-4 lg:px-6">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-lg bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center">
+          <button 
+            onClick={() => scrollToSection('hero')}
+            className="flex items-center space-x-2 hover:opacity-80 transition-opacity duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-lg p-1"
+          >
+            <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-lg bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-md">
               <span className="text-white font-bold text-lg lg:text-xl">B</span>
             </div>
             <span className="text-xl lg:text-2xl font-bold text-foreground">Briefly</span>
-          </div>
+          </button>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">

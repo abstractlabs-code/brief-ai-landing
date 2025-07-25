@@ -18,7 +18,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="pt-20 lg:pt-28 pb-12 lg:pb-20 px-4 bg-gradient-to-br from-background via-accent/20 to-background min-h-screen flex items-center">
+    <section id="hero" className="pt-20 lg:pt-28 pb-12 lg:pb-20 px-4 bg-gradient-to-br from-background via-accent/20 to-background min-h-screen flex items-center">
       <div className="container mx-auto text-center">
         <div className="max-w-5xl mx-auto animate-fade-in">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold text-foreground mb-4 lg:mb-8 leading-tight">
