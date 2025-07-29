@@ -60,6 +60,13 @@ const Header = () => {
               Pricing
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
             </button>
+            <a 
+              href="/blog"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-200 relative group"
+            >
+              Blog
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </a>
             <button 
               onClick={() => scrollToSection('register')}
               className="text-muted-foreground hover:text-foreground transition-colors duration-200 relative group"
@@ -104,6 +111,12 @@ const Header = () => {
               >
                 Pricing
               </button>
+              <a 
+                href="/blog"
+                className="block w-full text-left px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-colors duration-200 rounded-lg"
+              >
+                Blog
+              </a>
               <button 
                 onClick={() => scrollToSection('register')}
                 className="block w-full text-left px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-colors duration-200 rounded-lg"

@@ -90,17 +90,17 @@ const Footer = () => {
             <h3 className="font-semibold text-foreground mb-4">Legal</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-1">
+                <a href="/privacy-policy" className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-1">
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-1">
+                <a href="/terms-of-service" className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-1">
                   Terms of Service
                 </a>
               </li>
               <li>
-                <a href="#" className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-1">
+                <a href="/cookie-policy" className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-1">
                   Cookie Policy
                 </a>
               </li>
