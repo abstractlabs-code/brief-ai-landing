@@ -1,15 +1,37 @@
 import { Twitter, Linkedin, Github } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 80; // Account for sticky header
-      const elementPosition = element.offsetTop - offset;
-      window.scrollTo({
-        top: elementPosition,
-        behavior: 'smooth'
-      });
+    // If we're not on the homepage, navigate there first
+    if (location.pathname !== '/') {
+      navigate('/', { replace: true });
+      // Wait for navigation to complete before scrolling
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const offset = 80;
+          const elementPosition = element.offsetTop - offset;
+          window.scrollTo({
+            top: elementPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+    } else {
+      // We're already on the homepage, just scroll
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const offset = 80;
+        const elementPosition = element.offsetTop - offset;
+        window.scrollTo({
+          top: elementPosition,
+          behavior: 'smooth'
+        });
+      }
     }
   };
 
@@ -90,19 +112,19 @@ const Footer = () => {
             <h3 className="font-semibold text-foreground mb-4">Legal</h3>
             <ul className="space-y-3">
               <li>
-                <a href="/privacy-policy" className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-1">
+                <Link to="/privacy-policy" className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-1">
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/terms-of-service" className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-1">
+                <Link to="/terms-of-service" className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-1">
                   Terms of Service
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/cookie-policy" className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-1">
+                <Link to="/cookie-policy" className="text-muted-foreground hover:text-foreground hover:translate-x-1 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 rounded px-1">
                   Cookie Policy
-                </a>
+                </Link>
               </li>
             </ul>
           </div>

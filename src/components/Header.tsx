@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,16 +19,34 @@ const Header = () => {
   }, []);
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      const offset = 80; // Account for sticky header
-      const elementPosition = element.offsetTop - offset;
-      window.scrollTo({
-        top: elementPosition,
-        behavior: 'smooth'
-      });
-      setIsMobileMenuOpen(false);
+    // If we're not on the homepage, navigate there first
+    if (location.pathname !== '/') {
+      navigate('/', { replace: true });
+      // Wait for navigation to complete before scrolling
+      setTimeout(() => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          const offset = 80;
+          const elementPosition = element.offsetTop - offset;
+          window.scrollTo({
+            top: elementPosition,
+            behavior: 'smooth'
+          });
+        }
+      }, 100);
+    } else {
+      // We're already on the homepage, just scroll
+      const element = document.getElementById(sectionId);
+      if (element) {
+        const offset = 80;
+        const elementPosition = element.offsetTop - offset;
+        window.scrollTo({
+          top: elementPosition,
+          behavior: 'smooth'
+        });
+      }
     }
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -34,15 +55,15 @@ const Header = () => {
     }`}>
       <div className="container mx-auto px-4 lg:px-6">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          <button 
-            onClick={() => scrollToSection('hero')}
+          <Link 
+            to="/"
             className="flex items-center space-x-2 hover:opacity-80 transition-opacity duration-300 focus:outline-none focus:ring-2 focus:ring-primary/20 rounded-lg p-1"
           >
             <div className="w-8 h-8 lg:w-10 lg:h-10 rounded-lg bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center shadow-md">
               <span className="text-white font-bold text-lg lg:text-xl">B</span>
             </div>
             <span className="text-xl lg:text-2xl font-bold text-foreground">Briefly</span>
-          </button>
+          </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
@@ -60,13 +81,13 @@ const Header = () => {
               Pricing
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
             </button>
-            <a 
-              href="/blog"
+            <Link 
+              to="/blog"
               className="text-muted-foreground hover:text-foreground transition-colors duration-200 relative group"
             >
               Blog
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
-            </a>
+            </Link>
             <button 
               onClick={() => scrollToSection('register')}
               className="text-muted-foreground hover:text-foreground transition-colors duration-200 relative group"
@@ -111,12 +132,13 @@ const Header = () => {
               >
                 Pricing
               </button>
-              <a 
-                href="/blog"
+              <Link 
+                to="/blog"
                 className="block w-full text-left px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-colors duration-200 rounded-lg"
+                onClick={() => setIsMobileMenuOpen(false)}
               >
                 Blog
-              </a>
+              </Link>
               <button 
                 onClick={() => scrollToSection('register')}
                 className="block w-full text-left px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-colors duration-200 rounded-lg"
