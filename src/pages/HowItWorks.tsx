@@ -2,7 +2,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Brain, FileText, Shield, MessageSquare, Users, Zap } from 'lucide-react';
 import aiProcessingEngine from '@/assets/ai-processing-engine.png';
-import meetingProcessFlow from '@/assets/meeting-process-flow.png';
+import meetingProcessFlow from '/lovable-uploads/5e3cff10-1aec-4edf-9460-5935f1c542a8.png';
 import securityPrivacy from '@/assets/security-privacy.png';
 
 const HowItWorks = () => {
