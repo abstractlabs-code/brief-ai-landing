@@ -82,6 +82,13 @@ const Header = () => {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
             </button>
             <Link 
+              to="/how-it-works"
+              className="text-muted-foreground hover:text-foreground transition-colors duration-200 relative group"
+            >
+              How it works
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
+            </Link>
+            <Link 
               to="/blog"
               className="text-muted-foreground hover:text-foreground transition-colors duration-200 relative group"
             >
@@ -132,6 +139,13 @@ const Header = () => {
               >
                 Pricing
               </button>
+              <Link 
+                to="/how-it-works"
+                className="block w-full text-left px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-colors duration-200 rounded-lg"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                How it works
+              </Link>
               <Link 
                 to="/blog"
                 className="block w-full text-left px-4 py-3 text-muted-foreground hover:text-foreground hover:bg-accent/50 transition-colors duration-200 rounded-lg"
