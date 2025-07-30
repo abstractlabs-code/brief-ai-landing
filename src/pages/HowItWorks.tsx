@@ -33,6 +33,9 @@ const HowItWorks = () => {
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
                 🧠 Step-by-Step: From Recording to Insight
               </h2>
+              <p className="text-lg text-muted-foreground mb-8">
+                Meeting Capture → AI Transcription → Key Point Extraction → Action Item Detection → Smart Summarization
+              </p>
               <img 
                 src={meetingProcessFlow} 
                 alt="Meeting Process Flow" 
