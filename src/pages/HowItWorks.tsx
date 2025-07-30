@@ -285,16 +285,64 @@ const HowItWorks = () => {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <h2 className="text-3xl md:text-4xl font-bold mb-6 text-foreground">
-                  🔐 Your Privacy, Guaranteed
+                  🔐 Security & Privacy Features for Briefly
                 </h2>
-                <p className="text-lg text-muted-foreground mb-6">
-                  Your meeting content stays private — always. We don't train third-party models with your data. Everything is processed in your AWS region using IAM role restrictions, KMS encryption, and VPC private networking to ensure airtight security.
-                </p>
+                
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-foreground">End-to-End Encryption</h3>
+                    <p className="text-muted-foreground">
+                      Your meeting data is protected with military-grade AES-256 encryption from the moment it's captured until it reaches your dashboard. Audio, transcripts, and summaries are encrypted both in transit and at rest, ensuring only you have access to your sensitive conversations.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-foreground">Zero-Trust Architecture</h3>
+                    <p className="text-muted-foreground">
+                      Built on AWS with a zero-trust security model, every request is authenticated and authorized before accessing any data. Multi-factor authentication (MFA) is enforced for all user accounts, with role-based access controls ensuring team members only see what they need.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-foreground">Secure Data Processing</h3>
+                    <p className="text-muted-foreground">
+                      All transcription and AI processing occurs within encrypted, isolated environments. Audio files are processed in memory without persistent storage on processing servers, and temporary data is cryptographically wiped after use.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-foreground">Compliance & Standards</h3>
+                    <p className="text-muted-foreground">
+                      Briefly meets enterprise-grade security standards including SOC 2 Type II, GDPR compliance, and follows AWS Well-Architected Framework security pillars. Regular third-party security audits and penetration testing ensure continuous protection.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-foreground">Data Sovereignty</h3>
+                    <p className="text-muted-foreground">
+                      You maintain complete control over your data with options for automatic deletion, data export, and geographic storage preferences. Meeting recordings and transcripts can be automatically purged after specified retention periods.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-foreground">Network Security</h3>
+                    <p className="text-muted-foreground">
+                      All communications use TLS 1.3 encryption with certificate pinning. Our infrastructure includes Web Application Firewalls (WAF), DDoS protection, and network segmentation to prevent unauthorized access and attacks.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-foreground">Privacy by Design</h3>
+                    <p className="text-muted-foreground">
+                      No data is used for training AI models or shared with third parties. Audio processing is ephemeral, user analytics are anonymized, and privacy controls are granular and user-configurable.
+                    </p>
+                  </div>
+                </div>
               </div>
               <div className="flex justify-center">
                 <img 
-                  src={securityPrivacy} 
-                  alt="Enterprise Security & Privacy" 
+                  src="/lovable-uploads/e9dd62aa-9ead-4e3c-a373-91ff5df1d282.png"
+                  alt="Briefly Security Architecture - Enterprise-Grade Protection for Your Meeting Data" 
                   className="max-w-full h-auto rounded-lg shadow-lg"
                 />
               </div>
